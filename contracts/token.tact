@@ -4,12 +4,14 @@ import "./jetton";
 import "./messages";
 
 contract Token with Jetton, Deployable, Ownable {
+    tokenLauncher: Address;
     total_supply: Int as coins;
     owner: Address;
     content: Cell;
     mintable: Bool;
     max_supply: Int as coins;
-    init(owner: Address, content: Cell, max_supply: Int){
+    init(owner: Address, content: Cell, max_supply: Int, tokenLauncher: Address){
+        self.tokenLauncher = tokenLauncher;
         self.total_supply = 0;
         self.owner = owner;
         self.mintable = true;
@@ -17,14 +19,11 @@ contract Token with Jetton, Deployable, Ownable {
         self.max_supply = max_supply;
     }
 
-    receive(msg: Mint){
-        // 0xfc708bd2
+    receive(msg: MintAll){
         self.requireOwner();
-        //require(ctx.sender == self.owner, "Not owner");
         require(self.mintable, "Not mintable");
-        require((self.total_supply + msg.amount) <= self.max_supply, "Max supply exceeded");
+        self.mint(msg.receiver, self.max_supply, self.tokenLauncher); // (to, amount, response_destination)
         self.mintable = false;
         self.owner = address("0:0000000000000000000000000000000000000000000000000000000000000000"); // set the owner as the zero address
-        self.mint(msg.receiver, msg.amount, self.owner); // (to, amount, response_destination)
     }
 }

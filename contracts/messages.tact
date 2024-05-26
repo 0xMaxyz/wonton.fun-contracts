@@ -65,7 +65,23 @@ message(0xd1735400) TakeWalletAddress {
     wallet_address: Address;
     owner_address: Slice as remaining;
 }
-message(0xfc708bd2) Mint {
-    amount: Int;
+message ChangeOwnerMsg {
+    new_owner: Address;
+}
+message NewOwnerEvent {
+    new_owner: Address;
+}
+message NewToken {
+    queryId: Int as uint64;
+    content: Cell;
+    max_supply: Int as coins;
+    tokenLauncher: Address;
+}
+message NewTokenLaunched {
+    tokenAddress: Address;
+    launchedBy: Address;
+    content: Cell;
+}
+message MintAll {
     receiver: Address;
 }
