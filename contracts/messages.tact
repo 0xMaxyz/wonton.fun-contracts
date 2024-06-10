@@ -76,6 +76,9 @@ message NewToken {
     content: Cell;
     max_supply: Int as coins;
     tokenLauncher: Address;
+    website: String;
+    telegram: String;
+    twitter: String;
 }
 message NewTokenLaunched {
     tokenAddress: Address;

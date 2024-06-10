@@ -1,11 +1,11 @@
 import { toNano } from '@ton/core';
-import { Messages } from '../wrappers/Messages';
+import { JD } from '../wrappers/JettonDeployer';
 import { NetworkProvider } from '@ton/blueprint';
 
 export async function run(provider: NetworkProvider) {
-    const messages = provider.open(await Messages.fromInit());
+    const jettonDeployer = provider.open(await JD.fromInit(provider.sender().address!));
 
-    await messages.send(
+    await jettonDeployer.send(
         provider.sender(),
         {
             value: toNano('0.05'),
@@ -13,10 +13,8 @@ export async function run(provider: NetworkProvider) {
         {
             $$type: 'Deploy',
             queryId: 0n,
-        }
+        },
     );
 
-    await provider.waitForDeploy(messages.address);
-
-    // run methods on `messages`
+    await provider.waitForDeploy(jettonDeployer.address);
 }

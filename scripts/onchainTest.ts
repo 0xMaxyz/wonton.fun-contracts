@@ -1,16 +1,18 @@
 import { address, toNano } from '@ton/core';
-import { Manager } from '../wrappers/Manager';
+import { JD } from '../wrappers/JettonDeployer';
 import { NetworkProvider } from '@ton/blueprint';
 import { buildOnchainMetadata } from '../helpers/jetton-helpers';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export async function run(provider: NetworkProvider) {
-    const manager = provider.open(Manager.fromAddress(address('EQAraJXZSWWRaPLKzlROAgXTPzvxALWgqJAwD4FY3g1iCRtS')));
+    const manager = provider.open(JD.fromAddress(address(process.env.DEPLOYER_ADDRESS!)));
 
     const jettonParams = {
-        name: 'bitcoin',
-        description: 'TON bitcoin!',
-        symbol: 'BTC',
-        image: 'https://i.pinimg.com/736x/6a/de/d6/6aded693f2f4fe3e41834d5ca9877a8b.jpg',
+        name: `Max ${Math.random() * 1e4}`,
+        description: 'MaXX',
+        symbol: 'MX',
+        image: 'this is image address',
     };
 
     const content = buildOnchainMetadata(jettonParams);
@@ -19,14 +21,17 @@ export async function run(provider: NetworkProvider) {
     await manager.send(
         provider.sender(),
         {
-            value: toNano('0.7'),
+            value: toNano('0.1'),
         },
         {
             $$type: 'NewToken',
             content: content,
             max_supply: max_supply,
             tokenLauncher: provider.sender().address!,
-            queryId: 2n,
+            queryId: 0n,
+            website: 'website',
+            telegram: 'telegram',
+            twitter: 'twitter',
         },
     );
 }
