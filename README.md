@@ -24,3 +24,12 @@
 ### Add a new contract
 
 `npx blueprint create ContractName` or `yarn blueprint create ContractName`
+
+
+I updated the smart-contracts repo
+1. create .env file, use the .env.example to see what fields this file should have
+2. to deploy a new deployer contract, use the following script
+./deploy.sh
+if you want to deploy on mainnet use (I didn't test it on mainnet but it works on testnet)
+./deploy.sh --mainnet
+it uses toncenter api, so the required env vars shall be present (I didn't add checking for env vars in the script)
