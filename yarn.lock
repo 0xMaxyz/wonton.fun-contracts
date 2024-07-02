@@ -662,6 +662,11 @@
   resolved "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@scaleton/highload-wallet@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@scaleton/highload-wallet/-/highload-wallet-0.1.1.tgz"
+  integrity sha512-89FOJTaxGn2Pg+hP9tBiAvNP4kbTzq3VjGMoImP54U7xCJA2206Yf2f9/CYPzw2e8I4OEoMoBs/zMGvALx3WNw==
+
 "@scarf/scarf@^1.1.1":
   version "1.3.0"
   resolved "https://registry.npmjs.org/@scarf/scarf/-/scarf-1.3.0.tgz"
@@ -772,7 +777,7 @@
     ton-x "^2.1.0"
     ts-node "^10.9.1"
 
-"@ton/core@>=0.49.2", "@ton/core@>=0.56.0", "@ton/core@~0", "@ton/core@0.56.3":
+"@ton/core@>=0.49.2", "@ton/core@>=0.53.0", "@ton/core@>=0.56.0", "@ton/core@~0", "@ton/core@0.56.3":
   version "0.56.3"
   resolved "https://registry.npmjs.org/@ton/core/-/core-0.56.3.tgz"
   integrity sha512-HVkalfqw8zqLLPehtq0CNhu5KjVzc7IrbDwDHPjGoOSXmnqSobiWj8a5F+YuWnZnEbQKtrnMGNOOjVw4LG37rg==

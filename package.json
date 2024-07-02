@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@aws-crypto/sha256-js": "^5.2.0",
+        "@scaleton/highload-wallet": "^0.1.1",
         "dotenv": "^16.4.5",
         "ton-crypto": "^3.2.0",
         "yarn": "^1.22.22"
