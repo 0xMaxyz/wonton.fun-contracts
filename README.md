@@ -1,4 +1,4 @@
-# th
+# WONTON.FUN Contracts
 
 ## Project structure
 
